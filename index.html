@@ -8,7 +8,6 @@
   <link rel="icon" type="image/x-icon" href="memory-lane-logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
-  <script defer src="script.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;600&display=swap');
 
@@ -48,7 +47,7 @@
 
 <body class="relative overflow-hidden bg-gradient-to-br from-spaceBlack via-black to-gray-900 text-glowWhite font-body min-h-screen flex items-center justify-center px-4">
 
-  <!-- Background particles (time machine effect) -->
+  <!-- Background particles -->
   <div id="tsparticles" class="absolute inset-0 -z-10"></div>
 
   <!-- Background Music -->
@@ -62,7 +61,6 @@
       A digital capsule through time — capture today's dreams, send them to tomorrow's you.
     </p>
 
-    <!-- Button -->
     <button onclick="goToCreateAccount()" 
       class="w-full sm:w-auto bg-gradient-to-r from-neonPink to-neonBlue text-black font-bold text-lg py-3 px-8 rounded-2xl hover:brightness-110 transition-all shadow-xl tracking-wider animate-pulse">
       Time Capsule ON
@@ -74,7 +72,6 @@
       window.location.href = 'createaccount.html';
     }
 
-    // Time Travel Background Particles
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
       background: { color: "transparent" },
@@ -101,15 +98,16 @@
       detectRetina: true,
     });
 
-    // Handle Autoplay Restrictions
     document.addEventListener('DOMContentLoaded', function() {
       const music = document.getElementById('background-music');
-      // Some browsers block autoplay, so play manually after a user interaction
-      document.body.addEventListener('click', function() {
-        if (music.paused) {
+
+      // Try playing the music automatically
+      music.play().catch((error) => {
+        console.log('Autoplay prevented, waiting for user interaction...');
+        document.addEventListener('click', () => {
           music.play();
-        }
-      }, { once: true });
+        }, { once: true });
+      });
     });
   </script>
 
