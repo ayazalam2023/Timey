@@ -51,6 +51,9 @@
   <!-- Background particles (time machine effect) -->
   <div id="tsparticles" class="absolute inset-0 -z-10"></div>
 
+  <!-- Background Music -->
+  <audio id="background-music" src="A2.mp3" autoplay loop></audio>
+
   <!-- Content Container -->
   <div class="form-container w-full max-w-2xl bg-black/30 border border-gray-700 rounded-xl p-8 shadow-neon backdrop-blur-md text-center">
     <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto mb-6 neon-logo" id="logo" />
@@ -97,6 +100,18 @@
       },
       detectRetina: true,
     });
+
+    // Handle Autoplay Restrictions
+    document.addEventListener('DOMContentLoaded', function() {
+      const music = document.getElementById('background-music');
+      // Some browsers block autoplay, so play manually after a user interaction
+      document.body.addEventListener('click', function() {
+        if (music.paused) {
+          music.play();
+        }
+      }, { once: true });
+    });
   </script>
+
 </body>
 </html>
