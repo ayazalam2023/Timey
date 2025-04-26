@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Memory Lane – Create your account and start your digital journey.">
+  <title>Create Account - Memory Lane</title>
+  <link rel="icon" type="image/x-icon" href="memory-lane-logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;600&display=swap');
+    @keyframes neonPulse {
+      0%, 100% { filter: drop-shadow(0 0 10px #38bdf8) drop-shadow(0 0 20px #f472b6); }
+      50% { filter: drop-shadow(0 0 20px #f472b6) drop-shadow(0 0 40px #38bdf8); }
+    }
+    .neon-logo { animation: neonPulse 2s infinite alternate; }
+    .form-container { position: relative; z-index: 10; }
+    body, html { height: 100%; margin: 0; padding: 0; }
+    .logo-container {
+      position: relative;
+      cursor: pointer;
+    }
+    .logo-container:hover .mute-icon {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .mute-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      color: #f472b6;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Orbitron', 'sans-serif'],
+            body: ['Rajdhani', 'sans-serif'],
+          },
+          colors: {
+            neonBlue: '#38bdf8',
+            neonPink: '#f472b6',
+            spaceBlack: '#0f172a',
+            glowWhite: '#e2e8f0',
+          },
+          boxShadow: {
+            neon: '0 0 20px rgba(59, 130, 246, 0.7)',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="relative overflow-hidden bg-gradient-to-br from-spaceBlack via-black to-gray-900 text-glowWhite font-body min-h-screen flex items-center justify-center px-4">
+
+  <!-- Background particles -->
+  <div id="tsparticles" class="absolute inset-0 -z-10"></div>
+
+  <!-- Form Container -->
+  <div class="form-container w-full max-w-2xl bg-black/30 border border-gray-700 rounded-xl p-8 shadow-neon backdrop-blur-md text-center">
+    
+    <!-- Logo with Mute/Unmute Music -->
+    <div class="logo-container mb-6">
+      <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto neon-logo" id="logo" />
+      <div class="mute-icon" id="mute-icon">🔇</div>
+      <audio id="music" loop autoplay>
+        <source src="A1.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    
+    <h1 class="text-4xl sm:text-5xl font-heading text-neonBlue mb-4 tracking-wider">Create Your Account</h1>
+    <p class="text-base sm:text-lg text-gray-300 mb-8">
+      Join Memory Lane and start sending your memories into the future.
+    </p>
+
+    <!-- Account Creation Form -->
+    <form id="create-account-form" class="flex flex-col gap-4 justify-center" action="https://formspree.io/f/mgvkvzqp" method="POST">
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter your username..."
+        class="w-full p-3 rounded-md bg-black/40 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-neonBlue placeholder-gray-400"
+        required
+      />
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email..."
+        class="w-full p-3 rounded-md bg-black/40 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-neonBlue placeholder-gray-400"
+        required
+      />
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter your password..."
+        class="w-full p-3 rounded-md bg-black/40 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-neonBlue placeholder-gray-400"
+        required
+      />
+      <input
+        type="password"
+        id="confirm-password"
+        placeholder="Confirm your password..."
+        class="w-full p-3 rounded-md bg-black/40 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-neonBlue placeholder-gray-400"
+        required
+      />
+      <button
+        type="submit" href="future.html"
+        class="w-full bg-gradient-to-r from-neonPink to-neonBlue text-black font-semibold py-2 px-6 rounded-md hover:brightness-110 transition-all shadow-md"
+      >
+        Create Account
+      </button>
+    </form>
+  </div>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 60 },
+        size: { value: 2 },
+        color: { value: "#38bdf8" },
+        opacity: { value: 0.5 },
+        move: {
+          enable: true,
+          speed: 0.6,
+          random: true,
+          straight: false,
+          outModes: { default: "bounce" },
+        },
+        links: {
+          enable: true,
+          distance: 120,
+          color: "#f472b6",
+          opacity: 0.3,
+          width: 1,
+        },
+      },
+      detectRetina: true,
+    });
+
+    // Set initial volume to moderate level (50%)
+    const music = document.getElementById('music');
+    music.volume = 0.1; // Set initial volume to 50%
+
+    // Mute/Unmute Music on Logo Click
+    const logo = document.getElementById('logo');
+    const muteIcon = document.getElementById('mute-icon');
+
+    // Set initial mute state based on audio
+    if (music.muted) {
+      muteIcon.textContent = '🔇'; // Display mute icon
+    } else {
+      muteIcon.textContent = '🔊'; // Display unmute icon
+    }
+
+    logo.addEventListener('click', () => {
+      if (music.muted) {
+        music.muted = false; // Unmute
+        muteIcon.textContent = '🔊'; // Change to unmuted icon
+      } else {
+        music.muted = true; // Mute
+        muteIcon.textContent = '🔇'; // Change to muted icon
+      }
+    });
+  </script>
+</body>
+</html>
