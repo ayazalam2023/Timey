@@ -46,6 +46,22 @@
       font-family: 'Rajdhani', sans-serif;
     }
 
+    .popup button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #38bdf8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .popup button:hover {
+      background-color: #f472b6;
+    }
+
     /* Background particles (time machine effect) */
     .particle-bg { position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; }
 
@@ -96,9 +112,17 @@
 
   <!-- Popup message -->
   <div class="popup">
-    <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto mb-6 neon-logo" />
+    <!-- Logo as a clickable link to info.html -->
+    <a href="info.html">
+      <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto mb-6 neon-logo" />
+    </a>
     <h2>WELCOME TO THE FUTURE HUMAN</h2>
     <p class="message">Your journey begins now. Welcome to the future!</p>
+    
+    <!-- Button to navigate to upload.html -->
+    <a href="upload.html">
+      <button>Send Your Memories to the Future</button>
+    </a>
   </div>
 
   <!-- Particles animation -->
