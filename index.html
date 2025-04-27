@@ -55,7 +55,10 @@
 
   <!-- Content Container -->
   <div class="form-container w-full max-w-2xl bg-black/30 border border-gray-700 rounded-xl p-8 shadow-neon backdrop-blur-md text-center">
-    <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto mb-6 neon-logo" id="logo" />
+    <!-- Logo wrapped in a link to info.html -->
+    <a href="info.html">
+      <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto mb-6 neon-logo" id="logo" />
+    </a>
     <h1 class="text-4xl sm:text-5xl font-heading text-neonBlue mb-6 tracking-wider">Memory Lane</h1>
     <p class="text-base sm:text-lg text-gray-300 mb-10">
       A digital capsule through time — capture today's dreams, send them to tomorrow's you.
@@ -72,6 +75,7 @@
       window.location.href = 'createaccount.html';
     }
 
+    // Initialize particles effect
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
       background: { color: "transparent" },
@@ -101,7 +105,7 @@
     document.addEventListener('DOMContentLoaded', function() {
       const music = document.getElementById('background-music');
 
-      // Try playing the music automatically
+      // Ensure autoplay with user interaction for audio
       music.play().catch((error) => {
         console.log('Autoplay prevented, waiting for user interaction...');
         document.addEventListener('click', () => {
