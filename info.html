@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guide and Information - Memory Lane Project">
+  <title>Guide & Information - Memory Lane</title>
+  <link rel="icon" type="image/x-icon" href="memory-lane-logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Rajdhani:wght@400;600&display=swap');
+
+    @keyframes neonPulse {
+      0%, 100% { filter: drop-shadow(0 0 10px #38bdf8) drop-shadow(0 0 20px #f472b6); }
+      50% { filter: drop-shadow(0 0 20px #f472b6) drop-shadow(0 0 40px #38bdf8); }
+    }
+
+    .neon-logo { animation: neonPulse 2s infinite alternate; cursor: pointer; }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Rajdhani', sans-serif;
+      color: #e2e8f0;
+      background: linear-gradient(to right, #0f172a, #1e293b, #3b82f6);
+      height: auto; /* Remove fixed height */
+      overflow-y: auto; /* Ensure scrolling */
+      min-height: 100vh; /* Ensure content takes full height */
+    }
+
+    .form-container {
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+      margin-top: 40px;
+      margin-bottom: 40px;
+      width: 90%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-heading {
+      font-family: 'Orbitron', sans-serif;
+      color: #38bdf8;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .section-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    
+
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Orbitron', 'sans-serif'],
+            body: ['Rajdhani', 'sans-serif'],
+          },
+          colors: {
+            neonBlue: '#38bdf8',
+            neonPink: '#f472b6',
+            spaceBlack: '#0f172a',
+            glowWhite: '#e2e8f0',
+          },
+          boxShadow: {
+            neon: '0 0 20px rgba(59, 130, 246, 0.7)',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="overflow-auto">
+
+  <!-- Background particles -->
+  <div id="tsparticles" class="absolute inset-0 -z-10"></div>
+
+  <!-- Content Container -->
+  <div class="form-container">
+    <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-32 mx-auto mb-6 neon-logo" />
+    <h1 class="section-heading">Memory Lane - Guide & Information</h1>
+    <p class="section-text">
+      Welcome to Memory Lane, your personal time capsule. Capture today's memories and send them into the future.
+    </p>
+
+    <!-- Features Section -->
+    <div>
+      <h2 class="section-heading">Features:</h2>
+      <ul class="section-text list-disc pl-6 text-left">
+        <li><strong>Time Capsule:</strong> Send messages, photos, videos, and audio to the future!</li>
+        <li><strong>Drag & Drop Upload:</strong> Easily upload your memories.</li>
+        <li><strong>Multiple File Support:</strong> Upload audio, video, images, and documents.</li>
+        <li><strong>Neon Futuristic Design:</strong> A visually stunning, modern interface.</li>
+        <li><strong>Background Music:</strong> Soothing background music as you navigate.</li>
+        <li><strong>Responsive Design:</strong> Works on all screen sizes — desktop, tablet, and mobile.</li>
+      </ul>
+    </div>
+
+    <!-- How It Works Section -->
+    <div>
+      <h2 class="section-heading">How It Works:</h2>
+      <p class="section-text">
+        Upload your memories, set the time to unlock them in the future, and let Memory Lane preserve your moments.
+      </p>
+    </div>
+
+    <!-- About Me Section -->
+    <div>
+      <h2 class="section-heading">About The Creator:</h2>
+      <p class="section-text">
+        Created by: <strong>Ayaz Alam</strong><br />
+        Email: <a href="mailto:ayazxalam@gmail.com" class="text-neonBlue">ayazxalam@gmail.com</a><br />
+        A passionate project combining technology with creativity to build something memorable for the future.
+      </p>
+    </div>
+
+    <!-- Contact Section -->
+    <div>
+      <h2 class="section-heading">Contact Me:</h2>
+      <p class="section-text">
+        Reach out to me at <a href="mailto:ayazxalam@gmail.com" class="text-neonBlue">ayazxalam@gmail.com</a> for any questions, feedback, or suggestions.
+      </p>
+    </div>
+
+    <!-- Back Button -->
+    
+  </div>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 150 },
+        size: { value: { min: 1, max: 3 } },
+        color: { value: "#38bdf8" },
+        opacity: { value: 0.4 },
+        move: {
+          enable: true,
+          speed: { min: 1, max: 4 },
+          direction: "top",
+          straight: true,
+          outModes: { default: "out" },
+        },
+        links: {
+          enable: true,
+          distance: 100,
+          color: "#f472b6",
+          opacity: 0.2,
+          width: 1,
+        },
+      },
+      detectRetina: true,
+    });
+  </script>
+
+</body>
+</html>
