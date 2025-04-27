@@ -22,20 +22,6 @@
       position: relative;
       cursor: pointer;
     }
-    .logo-container:hover .mute-icon {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-    .mute-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 3rem;
-      color: #f472b6;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
   </style>
   <script>
     tailwind.config = {
@@ -68,14 +54,9 @@
   <!-- Form Container -->
   <div class="form-container w-full max-w-2xl bg-black/30 border border-gray-700 rounded-xl p-8 shadow-neon backdrop-blur-md text-center">
     
-    <!-- Logo with Mute/Unmute Music -->
-    <div class="logo-container mb-6">
+    <!-- Logo that redirects to info.html -->
+    <div class="logo-container mb-6" onclick="window.location.href='info.html'">
       <img src="memory-lane-logo.png" alt="Memory Lane Logo" class="w-24 mx-auto neon-logo" id="logo" />
-      <div class="mute-icon" id="mute-icon">🔇</div>
-      <audio id="music" loop autoplay>
-        <source src="A1.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
     </div>
     
     <h1 class="text-4xl sm:text-5xl font-heading text-neonBlue mb-4 tracking-wider">Create Your Account</h1>
@@ -149,30 +130,9 @@
       detectRetina: true,
     });
 
-    // Set initial volume to moderate level (50%)
+    // Auto-play audio with no mute/unmute functionality
     const music = document.getElementById('music');
-    music.volume = 0.1; // Set initial volume to 50%
-
-    // Mute/Unmute Music on Logo Click
-    const logo = document.getElementById('logo');
-    const muteIcon = document.getElementById('mute-icon');
-
-    // Set initial mute state based on audio
-    if (music.muted) {
-      muteIcon.textContent = '🔇'; // Display mute icon
-    } else {
-      muteIcon.textContent = '🔊'; // Display unmute icon
-    }
-
-    logo.addEventListener('click', () => {
-      if (music.muted) {
-        music.muted = false; // Unmute
-        muteIcon.textContent = '🔊'; // Change to unmuted icon
-      } else {
-        music.muted = true; // Mute
-        muteIcon.textContent = '🔇'; // Change to muted icon
-      }
-    });
+    music.volume = 0.1; // Set initial volume to 10%
 
     // Redirect to future.html when form is submitted
     function redirectToFuturePage(event) {
@@ -180,5 +140,12 @@
       window.location.href = "future.html"; // Redirect to future.html
     }
   </script>
+
+  <!-- Audio starts automatically when the page loads -->
+  <audio id="music" loop autoplay>
+    <source src="A1.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+
 </body>
 </html>
